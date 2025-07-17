@@ -6,18 +6,11 @@ use App\Http\Controllers\GroupController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\StudentController;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Здесь будут новые маршруты для учебных модулей, преподавателей, студентов и групп
-*/
+use App\Http\Controllers\UserController;
 
 Route::any('/', [GroupController::class, "home"])->name("home");
 
-Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function() {
+Route::prefix('dashboard')->middleware(['auth', 'verified', 'role:admin'])->group(function() {
     Route::get('/', function() {
         return view('dashboard');
     })->name('dashboard');
@@ -25,6 +18,7 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function() {
     Route::resource('teachers', TeacherController::class);
     Route::resource('students', StudentController::class);
     Route::resource('groups', GroupController::class);
+    Route::resource('users', UserController::class)->only(['index','edit','update']);
 });
 
 Route::middleware('auth')->group(function () {

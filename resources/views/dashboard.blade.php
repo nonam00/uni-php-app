@@ -42,6 +42,15 @@
                     <x-primary-button>{{ __("View") }}</x-primary-button>
                 </a>
             </div>
+
+            <div class="bg-white dark:bg-gray-800 px-6 mb-4 h-20 overflow-hidden shadow-sm sm:rounded-lg flex justify-between items-center">
+                <div class="text-gray-900 dark:text-gray-100">
+                    Users
+                </div>
+                <a href="{{ route("users.index") }}">
+                    <x-primary-button>{{ __("View") }}</x-primary-button>
+                </a>
+            </div>
         </div>
     </div>
 </x-app-layout>
