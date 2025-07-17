@@ -16,7 +16,6 @@
                             <th>ID</th>
                             <th>Название</th>
                             <th>Преподаватель</th>
-                            <th>Группы</th>
                             <th>Действия</th>
                         </tr>
                     </thead>
@@ -26,11 +25,6 @@
                             <td>{{ $module->id }}</td>
                             <td>{{ $module->title }}</td>
                             <td>{{ $module->teacher->name ?? '-' }}</td>
-                            <td>
-                                @foreach($module->groups as $group)
-                                    <span class="inline-block bg-gray-200 rounded px-2 py-1 text-xs mr-1">{{ $group->title }}</span>
-                                @endforeach
-                            </td>
                             <td>
                                 <a href="{{ route('modules.show', $module) }}">Просмотр</a> |
                                 <a href="{{ route('modules.edit', $module) }}">Редактировать</a> |

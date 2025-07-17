@@ -32,6 +32,7 @@ class TeacherController extends Controller
 
     public function show(Teacher $teacher): View
     {
+        $teacher->load('modules');
         return view('teachers.show', compact('teacher'));
     }
 

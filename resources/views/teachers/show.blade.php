@@ -13,6 +13,17 @@
                 <p><strong>ID:</strong> {{ $teacher->id }}</p>
                 <p><strong>Имя:</strong> {{ $teacher->name }}</p>
                 <p><strong>Email:</strong> {{ $teacher->email }}</p>
+                <hr class="my-4">
+                <h3 class="font-semibold text-lg mb-2">Модули, которые ведёт преподаватель:</h3>
+                @if($teacher->modules->count())
+                    <ul class="list-disc pl-5">
+                        @foreach($teacher->modules as $module)
+                            <li>{{ $module->title }}</li>
+                        @endforeach
+                    </ul>
+                @else
+                    <p>Этот преподаватель пока не ведёт модули.</p>
+                @endif
             </div>
         </div>
     </div>

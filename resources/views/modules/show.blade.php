@@ -14,11 +14,17 @@
                 <p><strong>Название:</strong> {{ $module->title }}</p>
                 <p><strong>Описание:</strong> {{ $module->description }}</p>
                 <p><strong>Преподаватель:</strong> {{ $module->teacher->name ?? '-' }}</p>
-                <p><strong>Группы:</strong>
-                    @foreach($module->groups as $group)
-                        <span class="inline-block bg-gray-200 rounded px-2 py-1 text-xs mr-1">{{ $group->title }}</span>
-                    @endforeach
-                </p>
+                <hr class="my-4">
+                <h3 class="font-semibold text-lg mb-2">Группы, в которых читается модуль:</h3>
+                @if($module->groups->count())
+                    <ul class="list-disc pl-5">
+                        @foreach($module->groups as $group)
+                            <li>{{ $group->title }}</li>
+                        @endforeach
+                    </ul>
+                @else
+                    <p>Этот модуль пока не назначен ни одной группе.</p>
+                @endif
             </div>
         </div>
     </div>
